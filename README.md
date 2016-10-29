@@ -1,2 +1,2 @@
 # swift-ffmpeg
-A fire-andforget shell script that encodes multiple video and audio files with ffmpeg.
+A fire-and-forget shell script that encodes multiple video and audio files with ffmpeg.
