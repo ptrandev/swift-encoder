@@ -8,6 +8,7 @@
 # Github: https://github.com/DonutDeflector/swift-ffmpeg
 #####
 
+##############################
 # Settings
 
 # Video Codec
@@ -25,10 +26,20 @@ ratefactor=21
 # default: medium
 preset=medium
 
+# Pixel Format (chroma sampling and bit depth)
+# (yuv420, yuv420p10le)
+# Default: yu42010le
+pixelformat=yu420p10le
+
 # Audio Codec
 # (ac3, eac3, wmav1, wmav2, libmp3lame, libfdk_aac, aac, libvorbis, vorbis, libopus)
 # default: aac
 audiocodec=aac
+
+# Audio Bitrate
+# (8, 16, 24, 32, 40, 48, 64, 80, 96, 112, 128, 160, 192, 224, 256, or 320)
+# default: 256
+audiobitrate=256
 
 # Input Format
 # (mp4, mkv, avi, etc.) 
@@ -40,10 +51,10 @@ inputformat=mp4
 # default: mkv
 outputformat=mkv
 
-##########################
+#########################
 
 # Core Function
 for f in *."$inputformat"; do ffmpeg -i "$f" -c:v "$videocodec" -crf "$ratefactor" -preset "$preset" \
-  -c:a "$audiocodec" -vbr 4 -movflags +faststart -vf scale=-2:720,format=yuv420p \
+  -c:a "$audiocodec" -b:a "$audiobitrate" -movflags +faststart -vf --pix_fmt "$pixelformat" \
   "completed/${f%."$inputformat"}."$outputformat""; done
 
