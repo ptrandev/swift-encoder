@@ -12,34 +12,38 @@
 
 # Video Codec
 # (libx264 or libx265)
-# Default: libx265
+# default: libx265
 videocodec=libx265
 
 # Rate Factor
 # (From 0-51 | Lower Number = Higher Quality) 
-# Default: 21
+# default: 21
 ratefactor=21
 
 # Preset
 # (ultrafast, superfast, veryfast, fast, medium, slow, slower, veryslow)
-# Default: medium
+# default: medium
 preset=medium
+
+# Audio Codec
+# (ac3, eac3, wmav1, wmav2, libmp3lame, libfdk_aac, aac, libvorbis, vorbis, libopus)
+# default: aac
+audiocodec=aac
 
 # Input Format
 # (mp4, mkv, avi, etc.) 
-# Default: mp4
+# default: mp4
 inputformat=mp4
 
 # Output Format
 # (mp4 or mkv) 
-# Default: mkv
+# default: mkv
 outputformat=mkv
 
+##########################
 
-
-
-# Legit FFmpeg
-for f in *.$inputformat; do ffmpeg -i "$f" -c:v $videocodec -crf $ratefactor -preset $preset \
-  -c:a libfdk_aac -vbr 4 -movflags +faststart -vf scale=-2:720,format=yuv420p \
+# Core Function
+for f in *."$inputformat"; do ffmpeg -i "$f" -c:v "$videocodec" -crf "$ratefactor" -preset "$preset" \
+  -c:a "$audiocodec" -vbr 4 -movflags +faststart -vf scale=-2:720,format=yuv420p \
   "completed/${f%."$inputformat"}."$outputformat""; done
 
