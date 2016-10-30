@@ -28,6 +28,7 @@ ___
   1. [Download the zip](https://github.com/DonutDeflector/swift-ffmpeg/archive/master.zip) 
   or clone the git repo with 'git clone https://github.com/DonutDeflector/swift-ffmpeg.git'
   2. Move **swift-ffmpeg.sh** to a directory of your choice. I recommend your home folder.
+	3. Give the script execute permissions: `chmod +x /path/to/swift-ffmpeg.sh`
 
 #### Operation
 This script is very easy to use:
