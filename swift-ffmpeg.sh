@@ -1,15 +1,16 @@
 #!/bin/sh
 
 ##########################################################
-# swift-ffmpeg																					 #
-#																												 #
-# A fire-and-forget shell script that encodes 					 #
+# swift-ffmpeg                                           #
+#                                                        #
+# A fire-and-forget shell script that encodes            #
 # multiple video and audio files with ffmpeg.            #
-#																												 #
+#                                                        #
 # Github: https://github.com/DonutDeflector/swift-ffmpeg #
 ##########################################################
 
 ##############################
+
 # Settings
 
 # Video Codec
