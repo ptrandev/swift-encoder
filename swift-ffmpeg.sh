@@ -17,7 +17,7 @@
 videocodec=libx265
 
 # Rate Factor
-# (From 0-51 | Lower Number = Higher Quality) 
+# (0-51 | Lower Number = Higher Quality) 
 # default: 21
 ratefactor=21
 
@@ -27,7 +27,7 @@ ratefactor=21
 preset=medium
 
 # Pixel Format (chroma sampling and bit depth)
-# (yuv420, yuv420p10le)
+# (yuv420 [8bit], yuv420p10le [10bit])
 # Default: yu42010le
 pixelformat=yu420p10le
 
@@ -54,7 +54,8 @@ outputformat=mkv
 #########################
 
 # Core Function
-for f in "$1"*."$inputformat"; do ffmpeg -i "$f" -c:v "$videocodec" -crf "$ratefactor" -preset "$preset" \
-  -c:a "$audiocodec" -b:a "$audiobitrate" -movflags +faststart -vf --pix_fmt "$pixelformat" \
-  ""$2"${f%."$inputformat"}."$outputformat""; done
+for f in "$1"/*."$inputformat"; do ffmpeg -i "$f" -c:v "$videocodec" \
+         -crf "$ratefactor" -preset "$preset" \ -c:a "$audiocodec" \
+         -b:a "$audiobitrate" -movflags +faststart -vf --pix_fmt "$pixelformat" \
+         ""$2"/${f%."$inputformat"}."$outputformat""; done
 
