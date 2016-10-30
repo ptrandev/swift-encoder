@@ -32,14 +32,8 @@ ___
 #### Operation
 This script is very easy to use:
   1. Change the encoding options as you see fit in the **swift-ffmpeg.sh** file.
-  2. Run the script: `./swift-ffmpeg.sh /source/files /encoded/files`
+  2. Run the script: `./swift-ffmpeg.sh /path/to/source/files`
   3. Sit back, relax, and wait for your files to finish encoding.
-  
-**Do not** use the same directory for source files and encoded files, especially if
-you are encoding to and from the same video format (i.e. mkv to mkv):
-  1. This may cause naming conflicts.
-  2. This may cause the script to encode videos until the eventual Heat Death of the 
-  Universe. Or until you terminate the session.
 
 ___
 
