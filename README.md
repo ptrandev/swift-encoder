@@ -27,9 +27,9 @@ ___
 #### Operation
 This script is very easy to use:
   1. Move the script into the directory that contains the files you wish to encode.
-  2. Open the terminal and navigate to that directory.
-  3. Run the script with `./swift-ffmpeg.sh`
-  4. Sit back, relax, and wait for your files to finish encoding.
+  2. Run the script: `./swift-ffmpeg.sh /files/to/encode /completed/files`
+  (Note: do not use the same directory for files to be encoded and completed files, this might cause the script to infinitely encode videos until the eventual Heat Death of the Universe. Or until you TERM the session.)
+  3. Sit back, relax, and wait for your files to finish encoding.
   
 ___
 
