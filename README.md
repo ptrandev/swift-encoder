@@ -40,6 +40,7 @@ you are encoding to and from the same video format (i.e. mkv to mkv):
   1. This may cause naming conflicts.
   2. This may cause the script to encode videos until the eventual Heat Death of the 
   Universe. Or until you terminate the session.
+
 ___
 
 ## 3. Modification and Redistribution
