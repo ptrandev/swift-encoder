@@ -13,8 +13,9 @@ ___
 ## 1. Function
 
 The purpose of swift-ffmpeg is to simplify and automate the encoding of multiple 
-video files. Encoding options are easily accessable by editing the variables within the
-script.
+video files. Once executed by the user, the script will automatically batch encode
+video files in a given folder. Encoding options are easily accessable by editing 
+the variables within `swift-ffmpeg.sh`.
 
 ___
 
@@ -34,7 +35,8 @@ ___
 This script is very easy to use:
   1. Change the encoding options as you see fit in the **swift-ffmpeg.sh** file.
   2. Run the script: `./swift-ffmpeg.sh /path/to/source/files`
-  3. Sit back, relax, and wait for your files to finish encoding.
+  3. Sit back, relax, and wait for your files to finish encoding. The files will reside in
+  the same folder as the source files with `[sf]` appended to the end of them.
 
 ___
 
