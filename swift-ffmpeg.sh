@@ -56,7 +56,6 @@ outputformat=mkv
 # Core Functionality
 # (Better off not touching unless you know what you are doing)
 for f in "$1"/*."$inputformat"; do ffmpeg -i "$f" -c:v "$videocodec" \
-         -crf "$ratefactor" -preset "$preset" \ -c:a "$audiocodec" \
-         -b:a "$audiobitrate" -movflags +faststart -vf --pix_fmt "$pixelformat" \
-         ""$2"/${f%."$inputformat"}."$outputformat""; done
-
+         -crf "$ratefactor" -preset "$preset" -c:a "$audiocodec" \
+         -b:a "$audiobitrate"k -pix_fmt "$pixelformat" \
+         "${f%."$inputformat"}[sf]."$outputformat""; done
