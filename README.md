@@ -1,5 +1,5 @@
 # swift-ffmpeg [wip]
-A fire-and-forget shell script that encodes multiple video and audio files with ffmpeg.
+A fire-and-forget shell script that encodes multiple video files with ffmpeg.
 
 ___
 
@@ -13,7 +13,7 @@ ___
 ## 1. Function
 
 The purpose of swift-ffmpeg is to simplify and automate the encoding of multiple 
-video/audio. Encoding options are easily accessable by editing the variables within the
+video files. Encoding options are easily accessable by editing the variables within the
 script.
 
 ___
