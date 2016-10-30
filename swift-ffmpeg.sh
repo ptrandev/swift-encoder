@@ -1,12 +1,13 @@
 #!/bin/sh
-#####
-# swift-ffmpeg
-#
-# A fire-and-forget shell script that encodes 
-# multiple video and audio files with ffmpeg.
-#
-# Github: https://github.com/DonutDeflector/swift-ffmpeg
-#####
+
+##########################################################
+# swift-ffmpeg																					 #
+#																												 #
+# A fire-and-forget shell script that encodes 					 #
+# multiple video and audio files with ffmpeg.            #
+#																												 #
+# Github: https://github.com/DonutDeflector/swift-ffmpeg #
+##########################################################
 
 ##############################
 # Settings
@@ -27,29 +28,39 @@ ratefactor=21
 preset=medium
 
 # Pixel Format (chroma sampling and bit depth)
-# (yuv420 [8bit], yuv420p10le [10bit])
-# Default: yu42010le
-pixelformat=yu420p10le
+# (yuv420p [8bit], yuv420p10le [10bit])
+# Default: yu4v2010le
+pixelformat=yuv420p10le
 
 # Audio Codec
 # (ac3, eac3, wmav1, wmav2, libmp3lame, libfdk_aac, aac, libvorbis, vorbis, libopus)
 # default: aac
 audiocodec=aac
 
-# Audio Bitrate
-# (8, 16, 24, 32, 40, 48, 64, 80, 96, 112, 128, 160, 192, 224, 256, or 320)
-# default: 256
-audiobitrate=256
+# Constant/Variable Bitrate
+# (b:a for CBR | q:a for VBR)
+# Default: b:a
+audioencoding=b:a
+
+# Constant Bitrate
+# CBR (8k, 16k, 24k, 32k, 40k, 48k, 64k, 80k, 96k, 112k, 128k, 160k, 192k, 224k, 256k, or 320k)
+# VBR (0-9 | Lower Number = Higher Quality)
+# default: 256k
+audiobitrate=256k # Very important to remember the 'k' for CBR
+
+# Audio Channels
+# default: 2
+audiochannels=2
 
 # Input Format
 # (mp4, mkv, avi, etc.) 
 # default: mp4
-inputformat=mp4
+inputformat=mkv
 
 # Output Format
-# (mp4 or mkv) 
+# (mp4, mkv, avi, etc.) 
 # default: mkv
-outputformat=mkv
+outputformat=mp4
 
 #########################
 
@@ -57,5 +68,5 @@ outputformat=mkv
 # (Better off not touching unless you know what you are doing)
 for f in "$1"/*."$inputformat"; do ffmpeg -i "$f" -c:v "$videocodec" \
          -crf "$ratefactor" -preset "$preset" -c:a "$audiocodec" \
-         -b:a "$audiobitrate"k -pix_fmt "$pixelformat" \
+         -"$audioencoding" "$audiobitrate" -ac "$audiochannels" -pix_fmt "$pixelformat" \
          "${f%."$inputformat"}[sf]."$outputformat""; done
