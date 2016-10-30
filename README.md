@@ -20,17 +20,26 @@ ___
 
 ## 2. Usage (For Linux)
 
+#### Package Requirements:
+  1. ffmpeg
+  2. git (optional)
+
 #### Obtaining 
-  1. [Download the zip](https://github.com/DonutDeflector/swift-ffmpeg/archive/master.zip) or clone the git repo with 'git clone https://github.com/DonutDeflector/swift-ffmpeg.git'
-  2. Move **swift-ffmpeg** to a directory of your choice.
+  1. [Download the zip](https://github.com/DonutDeflector/swift-ffmpeg/archive/master.zip) 
+  or clone the git repo with 'git clone https://github.com/DonutDeflector/swift-ffmpeg.git'
+  2. Move **swift-ffmpeg.sh** to a directory of your choice.
 
 #### Operation
 This script is very easy to use:
-  1. Move the script into the directory that contains the files you wish to encode.
-  2. Run the script: `./swift-ffmpeg.sh /files/to/encode /completed/files`
+  1. Change the encoding options as you see fit in the **swift-ffmpeg.sh** file.
+  2. Run the script: `./swift-ffmpeg.sh /source/files /encoded/files`
   3. Sit back, relax, and wait for your files to finish encoding.
   
-(NOTE: **do not** use the same directory for files to be encoded and completed files, this might cause the script to infinitely encode videos until the eventual Heat Death of the Universe. Or until you TERM the session.)
+**Do not** use the same directory for source files and encoded files, especially if
+you are encoding to and from the same video format (i.e. mkv to mkv):
+  1. This may cause naming conflicts.
+  2. This may cause the script to encode videos until the eventual Heat Death of the 
+  Universe. Or until you terminate the session.
 ___
 
 ## 3. Modification and Redistribution
