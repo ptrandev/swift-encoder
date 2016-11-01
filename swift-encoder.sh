@@ -1,13 +1,13 @@
 #!/bin/sh
 
-##########################################################
-# swift-encoder                                          #
-#                                                        #
-# A fire-and-forget shell script that encodes            #
-# multiple video and audio files with ffmpeg.            #
-#                                                        #
-# Github: https://github.com/DonutDeflector/swift-ffmpeg #
-##########################################################
+###########################################################
+# swift-encoder                                           #
+#                                                         #
+# A fire-and-forget shell script that encodes             #
+# multiple video and audio files with ffmpeg.             #
+#                                                         #
+# Github: https://github.com/DonutDeflector/swift-encoder #
+###########################################################
 
 ##############################
 
@@ -81,9 +81,9 @@ for f in "$1"/*."$inputformat"; do
          -"$audioencoding" "$audiobitrate" \
          -ac "$audiochannels" \
          -pix_fmt "$pixelformat" \
-         "${f%."$inputformat"}[sf]."$outputformat""; done
+         "${f%."$inputformat"}[se]."$outputformat""; done
 
 # Palace of Immigration
 # This is where we move the files
 mkdir "$1""$cmpltd_fls_fldr"/ # create folder
-mv "$1"*"[sf]"."$outputformat" "$1""$cmpltd_fls_fldr"/ # move the completed encodes
+mv "$1"*"[se]"."$outputformat" "$1""$cmpltd_fls_fldr"/ # move the completed encodes
