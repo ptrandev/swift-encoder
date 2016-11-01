@@ -35,8 +35,9 @@ ___
 This script is very easy to use:
   1. Change the encoding options as you see fit in the **swift-ffmpeg.sh** file.
   2. Run the script: `./swift-ffmpeg.sh /path/to/source/files`
-  3. Sit back, relax, and wait for your files to finish encoding. The files will reside in
-  the same folder as the source files with `[sf]` appended to the end of them.
+  3. Sit back, relax, and wait for your files to finish encoding. Once the script is finshed
+  running, the files will me moved into a folder called `completed` with `[sf]` appended to
+  them.
 
 ___
 
