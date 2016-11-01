@@ -1,4 +1,4 @@
-# swift-ffmpeg [wip]
+# swift-ffmpeg
 A fire-and-forget shell script that encodes multiple video files with ffmpeg.
 
 ___
