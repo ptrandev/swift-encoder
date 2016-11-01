@@ -36,7 +36,7 @@ This script is very easy to use:
   1. Change the encoding options as you see fit in the **swift-encoder.sh** file.
   2. Run the script: `./swift-encoder.sh /path/to/source/files`
   3. Sit back, relax, and wait for your files to finish encoding. Once the script is finshed
-  running, the files will me moved into a folder called `completed` with `[sf]` appended to
+  running, the files will me moved into a folder called `completed` with `[se]` appended to
   them.
 
 ___
