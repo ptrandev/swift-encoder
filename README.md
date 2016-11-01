@@ -1,4 +1,4 @@
-# swift-ffmpeg [wip]
+# swift-ffmpeg
 A fire-and-forget shell script that encodes multiple video files with ffmpeg.
 
 ___
@@ -27,7 +27,7 @@ ___
 
 #### Obtaining 
   1. [Download the zip](https://github.com/DonutDeflector/swift-ffmpeg/archive/master.zip) 
-  or clone the git repo with 'git clone https://github.com/DonutDeflector/swift-ffmpeg.git'
+  or clone the git repo with `git clone https://github.com/DonutDeflector/swift-ffmpeg.git`
   2. Move **swift-ffmpeg.sh** to a directory of your choice. I recommend your home folder.
   3. Give the script execute permissions: `chmod +x /path/to/swift-ffmpeg.sh`
 
@@ -35,8 +35,9 @@ ___
 This script is very easy to use:
   1. Change the encoding options as you see fit in the **swift-ffmpeg.sh** file.
   2. Run the script: `./swift-ffmpeg.sh /path/to/source/files`
-  3. Sit back, relax, and wait for your files to finish encoding. The files will reside in
-  the same folder as the source files with `[sf]` appended to the end of them.
+  3. Sit back, relax, and wait for your files to finish encoding. Once the script is finshed
+  running, the files will me moved into a folder called `completed` with `[sf]` appended to
+  them.
 
 ___
 
