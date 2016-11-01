@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ##########################################################
-# swift-ffmpeg                                           #
+# swift-encoder                                          #
 #                                                        #
 # A fire-and-forget shell script that encodes            #
 # multiple video and audio files with ffmpeg.            #
