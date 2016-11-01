@@ -65,7 +65,8 @@ outputformat=mp4
 
 # Completed Files Folder
 # (Ex: Completed | quality21/completed)
-# default: Completed
+# default: completed
+cmpltd_fls_fldr=completed
 
 #########################
 
@@ -84,5 +85,5 @@ for f in "$1"/*."$inputformat"; do
 
 # Palace of Immigration
 # This is where we move the files
-mkdir "$1""Completed"/ # Create the Completed Files Folder
-mv "$1"*"[sf]"."$outputformat" "$1""Completed"/
+mkdir "$1""$cmpltd_fls_fldr"/ # create folder
+mv "$1"*"[sf]"."$outputformat" "$1""$cmpltd_fls_fldr"/ # move the completed encodes
