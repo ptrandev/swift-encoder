@@ -21,17 +21,17 @@ videocodec=libx264
 # Rate Factor
 # (0-51 | Lower Number = Higher Quality) 
 # default: 21
-ratefactor=51
+ratefactor=21
 
 # Preset
 # (ultrafast, superfast, veryfast, fast, medium, slow, slower, veryslow)
 # default: medium
-preset=ultrafast
+preset=medium
 
 # Pixel Format (chroma sampling and bit depth)
 # (yuv420p [8bit], yuv420p10le [10bit])
 # Default: yu4v2010le
-pixelformat=yuv420p
+pixelformat=yuv420p10le
 
 # Audio Codec
 # (ac3, eac3, wmav1, wmav2, libmp3lame, libfdk_aac, aac, libvorbis, vorbis, libopus)
@@ -56,12 +56,12 @@ audiochannels=2
 # Input Format
 # (mp4, mkv, avi, etc.) 
 # default: mp4
-inputformat=mkv
+inputformat=mp4
 
 # Output Format
 # (mp4, mkv, avi, etc.) 
 # default: mkv
-outputformat=mp4
+outputformat=mkv
 
 # Completed Files Folder
 # (Ex: Completed | quality21/completed)
