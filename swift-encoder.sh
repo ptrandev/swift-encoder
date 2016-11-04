@@ -16,7 +16,7 @@
 # Video Codec
 # (libx264 or libx265)
 # default: libx265
-videocodec=libx264
+videocodec=libx265
 
 # Rate Factor
 # (0-51 | Lower Number = Higher Quality) 
@@ -43,7 +43,7 @@ audiocodec=aac
 # Default: b:a
 audioencoding=b:a
 
-# Constant Bitrate
+# Audio Bitrate
 # CBR (8k, 16k, 24k, 32k, 40k, 48k, 64k, 80k, 96k, 112k, 128k, 160k, 192k, 224k, 256k, or 320k)
 # VBR (0-9 | Lower Number = Higher Quality)
 # default: 256k
