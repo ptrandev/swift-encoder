@@ -58,7 +58,7 @@ badapt=2
 # Default: 40
 rclookahead=40
 
-# Sc_threshhold (scenecut)
+# Sc_threshold (scenecut)
 # Default: 45
 scthreshold=45
 
