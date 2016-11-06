@@ -4,7 +4,7 @@
 # swift-encoder                                           #
 #                                                         #
 # A fire-and-forget shell script that encodes             #
-# multiple video and audio files with ffmpeg.             #
+# multiple video files with ffmpeg.                       #
 #                                                         #
 # Github: https://github.com/DonutDeflector/swift-encoder #
 ###########################################################
@@ -33,6 +33,39 @@ preset=medium
 # Default: yu4v2010le
 pixelformat=yuv420p10le
 
+# Reference Frames (ref)
+# (1-16 | Higher Number = More Reference Frames)
+# Default: 8
+referenceframes=8
+
+# B-frames (bf)
+# (1-16 | Higher Number = More Concecutive B-frames)
+# Default: 8
+bframes=8
+
+# Weighted Prediction for B-frames
+# (0 to disable | 1 to enable)
+# Default: 1
+weightb=1
+
+# Adaptive B-frame Placement (b_strategy/b-adapt)
+# (0-2 | Higher Number = More Effiencent Encoding)
+# Default: 2
+badapt=2
+
+# rc-lookahead
+# (Number of frames to look ahead for frametype and ratecontrol)
+# Default: 40
+rclookahead=40
+
+# Sc_threshhold (scenecut)
+# Default: 45
+scthreshold=45
+
+# Strength of Psychovisual Optimization
+# Default = 2.0
+psyrd=2.0
+
 # Audio Codec
 # (ac3, eac3, wmav1, wmav2, libmp3lame, libfdk_aac, aac, libvorbis, vorbis, libopus)
 # default: aac
@@ -56,7 +89,7 @@ audiochannels=2
 # Input Format
 # (mp4, mkv, avi, etc.) 
 # default: mp4
-inputformat=mp4
+inputformat=mkv
 
 # Output Format
 # (mp4, mkv, avi, etc.) 
@@ -77,6 +110,13 @@ for f in "$1"/*."$inputformat"; do
          -c:v "$videocodec" \
          -crf "$ratefactor" \
          -preset "$preset" \
+         -refs "$referenceframes" \
+         -bf "$bframes" \
+         -b_strategy "$badapt" \
+         -rc-lookahead "$rclookahead" \
+         -sc_threshold "$scthreshold" \
+         -weightb "$weightb" \
+         -psy-rd "$psyrd" \
          -c:a "$audiocodec" \
          -"$audioencoding" "$audiobitrate" \
          -ac "$audiochannels" \
