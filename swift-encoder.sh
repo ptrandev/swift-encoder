@@ -69,7 +69,7 @@ psyrd=2.0
 # Audio Codec
 # (ac3, eac3, wmav1, wmav2, libmp3lame, libfdk_aac, aac, libvorbis, vorbis, libopus)
 # default: aac
-audiocodec=aac
+audiocodec=libopus
 
 # Constant/Variable Bitrate
 # (b:a for CBR | q:a for VBR)
@@ -79,8 +79,8 @@ audioencoding=b:a
 # Audio Bitrate
 # CBR (8k, 16k, 24k, 32k, 40k, 48k, 64k, 80k, 96k, 112k, 128k, 160k, 192k, 224k, 256k, or 320k)
 # VBR (0-9 | Lower Number = Higher Quality)
-# default: 256k
-audiobitrate=256k # Very important to remember the 'k' for CBR
+# default: 192k
+audiobitrate=192k # Very important to remember the 'k' for CBR
 
 # Audio Channels
 # default: 2
