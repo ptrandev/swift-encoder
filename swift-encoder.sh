@@ -68,7 +68,7 @@ psyrd=2.0
 
 # Audio Codec
 # (ac3, eac3, wmav1, wmav2, libmp3lame, libfdk_aac, aac, libvorbis, vorbis, libopus)
-# default: aac
+# default: libopus
 audiocodec=libopus
 
 # Constant/Variable Bitrate
