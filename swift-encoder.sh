@@ -58,9 +58,9 @@ badapt=2
 # Default: 40
 rclookahead=40
 
-# Sc_threshold (scenecut)
+# Scenecut
 # Default: 45
-scthreshold=45
+scenecut=45
 
 # Strength of Psychovisual Optimization
 # Default = 2.0
@@ -89,7 +89,7 @@ audiochannels=2
 # Input Format
 # (mp4, mkv, avi, etc.) 
 # default: mp4
-inputformat=mkv
+inputformat=mp4
 
 # Output Format
 # (mp4, mkv, avi, etc.) 
@@ -105,25 +105,32 @@ cmpltd_fls_fldr=completed
 
 # Core Functionality
 # (Better off not touching unless you know what you are doing)
-for f in "$1"/*."$inputformat"; do 
+
+if [ "$1" = "anime" ]; then
+for f in "$2"/*."$inputformat"; do 
          ffmpeg -i "$f" \
          -c:v "$videocodec" \
          -crf "$ratefactor" \
          -preset "$preset" \
-         -refs "$referenceframes" \
-         -bf "$bframes" \
-         -b_strategy "$badapt" \
-         -rc-lookahead "$rclookahead" \
-         -sc_threshold "$scthreshold" \
-         -weightb "$weightb" \
-         -psy-rd "$psyrd" \
+	 -x265-params allow-non-conformance:ref=8:bframes=8:rd=6:me=star:b-adapt=2:qg-size=64:rc-lookahead=40:scenecut=45:weightb=1:psy-rd=2.0 \
          -c:a "$audiocodec" \
          -"$audioencoding" "$audiobitrate" \
          -ac "$audiochannels" \
          -pix_fmt "$pixelformat" \
          "${f%."$inputformat"}[se]."$outputformat""; done
+else
+for f in "$2"/*."$inputformat"; do 
+         ffmpeg -i "$f" \
+         -c:v "$videocodec" \
+         -crf "$ratefactor" \
+         -preset "$preset" \
+         -c:a "$audiocodec" \
+         -"$audioencoding" "$audiobitrate" \
+         -ac "$audiochannels" \
+         "${f%."$inputformat"}[se]."$outputformat""; done
+fi
 
 # Palace of Immigration
 # This is where we move the files
-mkdir "$1""$cmpltd_fls_fldr"/ # create folder
-mv "$1"*"[se]"."$outputformat" "$1""$cmpltd_fls_fldr"/ # move the completed encodes
+mkdir "$2""$cmpltd_fls_fldr"/ # create folder
+mv "$2"*"[se]"."$outputformat" "$2""$cmpltd_fls_fldr"/ # move the completed encodes
