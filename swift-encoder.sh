@@ -9,6 +9,12 @@
 # Github: https://github.com/DonutDeflector/swift-encoder #
 ###########################################################
 
+###########################################################
+# Available Optimizations                                 #
+#                                                         #
+# Anime - Adds some h265 specific encoding settings.      #
+###########################################################
+
 ##############################
 
 # Settings
@@ -30,41 +36,8 @@ preset=medium
 
 # Pixel Format (chroma sampling and bit depth)
 # (yuv420p [8bit], yuv420p10le [10bit])
-# Default: yu4v2010le
-pixelformat=yuv420p10le
-
-# Reference Frames (ref)
-# (1-16 | Higher Number = More Reference Frames)
-# Default: 8
-referenceframes=8
-
-# B-frames (bf)
-# (1-16 | Higher Number = More Concecutive B-frames)
-# Default: 8
-bframes=8
-
-# Weighted Prediction for B-frames
-# (0 to disable | 1 to enable)
-# Default: 1
-weightb=1
-
-# Adaptive B-frame Placement (b_strategy/b-adapt)
-# (0-2 | Higher Number = More Effiencent Encoding)
-# Default: 2
-badapt=2
-
-# rc-lookahead
-# (Number of frames to look ahead for frametype and ratecontrol)
-# Default: 40
-rclookahead=40
-
-# Scenecut
-# Default: 45
-scenecut=45
-
-# Strength of Psychovisual Optimization
-# Default = 2.0
-psyrd=2.0
+# Default: yu4v420p
+pixelformat=yuv420p
 
 # Audio Codec
 # (ac3, eac3, wmav1, wmav2, libmp3lame, libfdk_aac, aac, libvorbis, vorbis, libopus)
@@ -112,7 +85,7 @@ for f in "$2"/*."$inputformat"; do
          -c:v "$videocodec" \
          -crf "$ratefactor" \
          -preset "$preset" \
-	 -x265-params allow-non-conformance:ref=8:bframes=8:rd=6:me=star:b-adapt=2:qg-size=64:rc-lookahead=40:scenecut=45:weightb=1:psy-rd=2.0 \
+	       -x265-params allow-non-conformance:ref=8:bframes=8:rd=6:me=star:b-adapt=2:qg-size=64:rc-lookahead=40:scenecut=45:weightb=1:psy-rd=2.0 \
          -c:a "$audiocodec" \
          -"$audioencoding" "$audiobitrate" \
          -ac "$audiochannels" \
