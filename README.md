@@ -39,6 +39,7 @@ This script is very easy to use:
 
       - example: `sh swift-encoder.sh anime /home/donut/Videos/NGE`
       - example: `sh swift-encoder.sh normal /home/donut/Videos/Sports\ Cam`
+      
   **Note:** The script will default to `normal` if the optimization is misspelled.
       
   3. Sit back, relax, and wait for your files to finish encoding. Once the
