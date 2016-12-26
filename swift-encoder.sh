@@ -12,7 +12,8 @@
 ###########################################################
 # Available Optimizations                                 #
 #                                                         #
-# Anime - Adds some h265 specific encoding settings.      #
+# Anime - Adds some specific encoding options.            #
+# Normal - Adds no additionall encoding options.          #
 ###########################################################
 
 ##############################
@@ -22,7 +23,7 @@
 # Video Codec
 # (libx264 or libx265)
 # default: libx265
-videocodec=libx265
+videocodec=libx264
 
 # Rate Factor
 # (0-51 | Lower Number = Higher Quality) 
@@ -37,7 +38,7 @@ preset=medium
 # Pixel Format (chroma sampling and bit depth)
 # (yuv420p [8bit], yuv420p10le [10bit])
 # Default: yu4v420p
-pixelformat=yuv420p
+pixelformat=yuv420p10le
 
 # Audio Codec
 # (ac3, eac3, wmav1, wmav2, libmp3lame, libfdk_aac, aac, libvorbis, vorbis, libopus)
@@ -79,7 +80,19 @@ cmpltd_fls_fldr=completed
 # Core Functionality
 # (Better off not touching unless you know what you are doing)
 
-if [ "$1" = "anime" ]; then
+if [ "$1" = "anime" ] && [ "$videocodec" = "libx264" ] ; then
+for f in "$2"/*."$inputformat"; do 
+         ffmpeg -i "$f" \
+         -c:v "$videocodec" \
+         -crf "$ratefactor" \
+         -preset "$preset" \
+         -tune animation \
+         -c:a "$audiocodec" \
+         -"$audioencoding" "$audiobitrate" \
+         -ac "$audiochannels" \
+         -pix_fmt "$pixelformat" \
+         "${f%."$inputformat"}[se]."$outputformat""; done
+elif [ "$1" = "anime" ] && [ "$videocodec" = "libx265" ] ; then
 for f in "$2"/*."$inputformat"; do 
          ffmpeg -i "$f" \
          -c:v "$videocodec" \
@@ -91,7 +104,7 @@ for f in "$2"/*."$inputformat"; do
          -ac "$audiochannels" \
          -pix_fmt "$pixelformat" \
          "${f%."$inputformat"}[se]."$outputformat""; done
-else
+else 
 for f in "$2"/*."$inputformat"; do 
          ffmpeg -i "$f" \
          -c:v "$videocodec" \
@@ -100,6 +113,7 @@ for f in "$2"/*."$inputformat"; do
          -c:a "$audiocodec" \
          -"$audioencoding" "$audiobitrate" \
          -ac "$audiochannels" \
+         -pix_fmt "$pixelformat" \
          "${f%."$inputformat"}[se]."$outputformat""; done
 fi
 
