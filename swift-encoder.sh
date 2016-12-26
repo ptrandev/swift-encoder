@@ -13,7 +13,7 @@
 # Available Optimizations                                 #
 #                                                         #
 # Anime - Adds some specific encoding options.            #
-# Normal - Adds no additionall encoding options.          #
+# Normal - Adds no additional encoding options.           #
 ###########################################################
 
 ##############################
