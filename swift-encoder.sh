@@ -98,7 +98,7 @@ elif [ "$1" = "anime" ] && [ "$videocodec" = "libx265" ] ; then
          -c:v "$videocodec" \
          -crf "$ratefactor" \
          -preset "$preset" \
-	       -x265-params allow-non-conformance:ref=8:bframes=8:rd=6:me=star:b-adapt=2:qg-size=64:rc-lookahead=40:scenecut=45:weightb=1:psy-rd=2.0 \
+	 -x265-params allow-non-conformance:ref=8:bframes=8:rd=6:me=star:b-adapt=2:qg-size=64:rc-lookahead=40:scenecut=45:weightb=1:psy-rd=2.0 \
          -c:a "$audiocodec" \
          -"$audioencoding" "$audiobitrate" \
          -ac "$audiochannels" \
