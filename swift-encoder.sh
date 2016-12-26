@@ -13,7 +13,7 @@
 # Available Optimizations                                 #
 #                                                         #
 # Anime - Adds some specific encoding options.            #
-# Normal - Adds no additionall encoding options.          #
+# Normal - Adds no additional encoding options.           #
 ###########################################################
 
 ##############################
@@ -81,7 +81,7 @@ cmpltd_fls_fldr=completed
 # (Better off not touching unless you know what you are doing)
 
 if [ "$1" = "anime" ] && [ "$videocodec" = "libx264" ] ; then
-for f in "$2"/*."$inputformat"; do 
+  for f in "$2"/*."$inputformat"; do 
          ffmpeg -i "$f" \
          -c:v "$videocodec" \
          -crf "$ratefactor" \
@@ -93,7 +93,7 @@ for f in "$2"/*."$inputformat"; do
          -pix_fmt "$pixelformat" \
          "${f%."$inputformat"}[se]."$outputformat""; done
 elif [ "$1" = "anime" ] && [ "$videocodec" = "libx265" ] ; then
-for f in "$2"/*."$inputformat"; do 
+  for f in "$2"/*."$inputformat"; do 
          ffmpeg -i "$f" \
          -c:v "$videocodec" \
          -crf "$ratefactor" \
@@ -105,7 +105,7 @@ for f in "$2"/*."$inputformat"; do
          -pix_fmt "$pixelformat" \
          "${f%."$inputformat"}[se]."$outputformat""; done
 else 
-for f in "$2"/*."$inputformat"; do 
+  for f in "$2"/*."$inputformat"; do 
          ffmpeg -i "$f" \
          -c:v "$videocodec" \
          -crf "$ratefactor" \
