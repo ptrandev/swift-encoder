@@ -23,7 +23,7 @@
 # Video Codec
 # (libx264 or libx265)
 # default: libx265
-videocodec=libx264
+videocodec=libx265
 
 # Rate Factor
 # (0-51 | Lower Number = Higher Quality) 
@@ -37,7 +37,7 @@ preset=medium
 
 # Pixel Format (chroma sampling and bit depth)
 # (yuv420p [8bit], yuv420p10le [10bit])
-# Default: yu4v420p
+# Default: yu4v420p10le
 pixelformat=yuv420p10le
 
 # Audio Codec
