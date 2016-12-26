@@ -81,7 +81,7 @@ cmpltd_fls_fldr=completed
 # (Better off not touching unless you know what you are doing)
 
 if [ "$1" = "anime" ] && [ "$videocodec" = "libx264" ] ; then
-for f in "$2"/*."$inputformat"; do 
+  for f in "$2"/*."$inputformat"; do 
          ffmpeg -i "$f" \
          -c:v "$videocodec" \
          -crf "$ratefactor" \
@@ -93,19 +93,19 @@ for f in "$2"/*."$inputformat"; do
          -pix_fmt "$pixelformat" \
          "${f%."$inputformat"}[se]."$outputformat""; done
 elif [ "$1" = "anime" ] && [ "$videocodec" = "libx265" ] ; then
-for f in "$2"/*."$inputformat"; do 
+  for f in "$2"/*."$inputformat"; do 
          ffmpeg -i "$f" \
          -c:v "$videocodec" \
          -crf "$ratefactor" \
          -preset "$preset" \
-	       -x265-params allow-non-conformance:ref=8:bframes=8:rd=6:me=star:b-adapt=2:qg-size=64:rc-lookahead=40:scenecut=45:weightb=1:psy-rd=2.0 \
+	 -x265-params allow-non-conformance:ref=8:bframes=8:rd=6:me=star:b-adapt=2:qg-size=64:rc-lookahead=40:scenecut=45:weightb=1:psy-rd=2.0 \
          -c:a "$audiocodec" \
          -"$audioencoding" "$audiobitrate" \
          -ac "$audiochannels" \
          -pix_fmt "$pixelformat" \
          "${f%."$inputformat"}[se]."$outputformat""; done
 else 
-for f in "$2"/*."$inputformat"; do 
+  for f in "$2"/*."$inputformat"; do 
          ffmpeg -i "$f" \
          -c:v "$videocodec" \
          -crf "$ratefactor" \
