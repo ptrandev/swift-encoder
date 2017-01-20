@@ -28,12 +28,12 @@ videocodec=libx265
 # Rate Factor
 # (0-51 | Lower Number = Higher Quality)
 # default: 21
-ratefactor=51
+ratefactor=21
 
 # Preset
 # (ultrafast, superfast, veryfast, fast, medium, slow, slower, veryslow)
 # default: medium
-preset=ultrafast
+preset=medium
 
 # Pixel Format (chroma sampling and bit depth)
 # (yuv420p [8bit], yuv420p10le [10bit])
