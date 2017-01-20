@@ -26,14 +26,14 @@
 videocodec=libx265
 
 # Rate Factor
-# (0-51 | Lower Number = Higher Quality) 
+# (0-51 | Lower Number = Higher Quality)
 # default: 21
-ratefactor=21
+ratefactor=51
 
 # Preset
 # (ultrafast, superfast, veryfast, fast, medium, slow, slower, veryslow)
 # default: medium
-preset=medium
+preset=ultrafast
 
 # Pixel Format (chroma sampling and bit depth)
 # (yuv420p [8bit], yuv420p10le [10bit])
@@ -61,12 +61,12 @@ audiobitrate=192k # Very important to remember the 'k' for CBR
 audiochannels=2
 
 # Input Format
-# (mp4, mkv, avi, etc.) 
+# (mp4, mkv, avi, etc.)
 # default: mp4
-inputformat=mp4
+inputformat=mkv
 
 # Output Format
-# (mp4, mkv, avi, etc.) 
+# (mp4, mkv, avi, etc.)
 # default: mkv
 outputformat=mkv
 
@@ -81,40 +81,46 @@ cmpltd_fls_fldr=completed
 # (Better off not touching unless you know what you are doing)
 
 if [ "$1" = "anime" ] && [ "$videocodec" = "libx264" ] ; then
-  for f in "$2"/*."$inputformat"; do 
-         ffmpeg -i "$f" \
-         -c:v "$videocodec" \
-         -crf "$ratefactor" \
-         -preset "$preset" \
-         -tune animation \
-         -c:a "$audiocodec" \
-         -"$audioencoding" "$audiobitrate" \
-         -ac "$audiochannels" \
-         -pix_fmt "$pixelformat" \
-         "${f%."$inputformat"}[se]."$outputformat""; done
+  for f in "$2"/*."$inputformat"; do
+    ffmpeg -i "$f" \
+    -c:v "$videocodec" \
+    -crf "$ratefactor" \
+    -preset "$preset" \
+    -tune animation \
+    -c:a "$audiocodec" \
+    -"$audioencoding" "$audiobitrate" \
+    -ac "$audiochannels" \
+    -pix_fmt "$pixelformat" \
+    -map 0 \
+    -c:s copy \
+    "${f%."$inputformat"}[se]."$outputformat""; done
 elif [ "$1" = "anime" ] && [ "$videocodec" = "libx265" ] ; then
-  for f in "$2"/*."$inputformat"; do 
-         ffmpeg -i "$f" \
-         -c:v "$videocodec" \
-         -crf "$ratefactor" \
-         -preset "$preset" \
-	 -x265-params allow-non-conformance:ref=8:bframes=8:rd=6:me=star:b-adapt=2:qg-size=64:rc-lookahead=40:scenecut=45:weightb=1:psy-rd=2.0 \
-         -c:a "$audiocodec" \
-         -"$audioencoding" "$audiobitrate" \
-         -ac "$audiochannels" \
-         -pix_fmt "$pixelformat" \
-         "${f%."$inputformat"}[se]."$outputformat""; done
-else 
-  for f in "$2"/*."$inputformat"; do 
-         ffmpeg -i "$f" \
-         -c:v "$videocodec" \
-         -crf "$ratefactor" \
-         -preset "$preset" \
-         -c:a "$audiocodec" \
-         -"$audioencoding" "$audiobitrate" \
-         -ac "$audiochannels" \
-         -pix_fmt "$pixelformat" \
-         "${f%."$inputformat"}[se]."$outputformat""; done
+  for f in "$2"/*."$inputformat"; do
+    ffmpeg -i "$f" \
+    -c:v "$videocodec" \
+    -crf "$ratefactor" \
+    -preset "$preset" \
+    -x265-params allow-non-conformance:ref=8:bframes=8:rd=6:me=star:b-adapt=2:qg-size=64:rc-lookahead=40:scenecut=45:weightb=1:psy-rd=2.0 \
+    -c:a "$audiocodec" \
+    -"$audioencoding" "$audiobitrate" \
+    -ac "$audiochannels" \
+    -pix_fmt "$pixelformat" \
+    -map 0 \
+    -c:s copy \
+    "${f%."$inputformat"}[se]."$outputformat""; done
+else
+  for f in "$2"/*."$inputformat"; do
+    ffmpeg -i "$f" \
+    -c:v "$videocodec" \
+    -crf "$ratefactor" \
+    -preset "$preset" \
+    -c:a "$audiocodec" \
+    -"$audioencoding" "$audiobitrate" \
+    -ac "$audiochannels" \
+    -pix_fmt "$pixelformat" \
+    -map 0 \
+    -c:s copy \
+    "${f%."$inputformat"}[se]."$outputformat""; done
 fi
 
 # Palace of Immigration
