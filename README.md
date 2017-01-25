@@ -43,7 +43,7 @@ This script is very easy to use:
   **Note:** The script will default to `normal` if the optimization is misspelled.
       
   3. Sit back, relax, and wait for your files to finish encoding. Once the
-  script is finshed running, the files will me moved into a folder called
+  script is finshed running, the files will be moved into a folder called
   `completed` with `[se]` appended to them.
 
 ___
